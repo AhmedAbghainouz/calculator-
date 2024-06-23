@@ -89,10 +89,55 @@ button:active {
     <script>
 
         document.addEventListener('DOMContentLoaded', function(){
-            firstvar = '0'; 
-            firstoperande = null ; 
-            secondoperande = null ; 
-            firstexists = false ; 
+
+            let display = document.getElementById("display") ;
+          
+            let buttons = Array.from(document.querySelectorAll("button")) ;
+
+            let second_op = '' ; 
+            let first_op = '' ; 
+            let operator = '' ;
+            
+            buttons.forEach(button => {
+              button.addEventListener('click' , (event) => {
+                let value = event.target.innerText ; 
+                if (!isNaN(value) || value === '.'){
+                  getoperand();
+                }
+                else if (value === 'C'){
+                  initialize(value) ; 
+                }
+                else if (value === '='){
+                  giveResult() ; 
+                }
+                else{
+                  getOperator(value) ; 
+                }
+              })
+
+              function getOperand(N){
+                if(first_op.includes('.') && N==='.'){
+                  return ; 
+                }
+                first_op += N ;
+              }
+              function getOperator(o){
+                
+              }
+              function giveResult(){
+
+              }
+              function giveResult(){
+
+              }
+              function update(){
+
+              }
+              function initialize(){
+
+              }
+
+            });
         });
 
     </script>
