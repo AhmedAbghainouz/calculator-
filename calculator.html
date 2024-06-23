@@ -1,0 +1,100 @@
+<style>
+    body {
+  color: aliceblue;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background-color: #282c34;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.calculator {
+  background-color: #192636;
+  width: 320px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.result {
+  background-color: #6179d8;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 1.5em;
+  text-align: right;
+  color: #fff;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+button {
+  background-color: #4a90e2;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.2em;
+  flex: 1 1 22%;
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #357ab9;
+}
+
+button:active {
+  background-color: #2d6491;
+}
+    
+</style>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+  </head>
+  <body>
+    <section class="calculator">
+        <section class="result">
+            <div id="display">0</div>
+        </section>
+        <section class="buttons">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>+</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>-</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>x</button>
+            <button>/</button>
+            <button>0</button>
+            <button>.</button>
+            <button>=</button>
+            <button>C</button> <!-- Clear button -->
+        </section>
+    </section>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function(){
+            firstvar = '0'; 
+            firstoperande = null ; 
+            secondoperande = null ; 
+            firstexists = false ; 
+        });
+
+    </script>
+  </body>
+</html>
