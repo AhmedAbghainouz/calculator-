@@ -5,13 +5,13 @@
   display: flex;
   align-items: center;
   height: 100vh;
-  background-color: #282c34;
+  background-color: #606d86;
   font-family: Arial, sans-serif;
   margin: 0;
 }
 
 .calculator {
-  background-color: #192636;
+  background-color: #62b8be;
   width: 320px;
   padding: 20px;
   border-radius: 15px;
@@ -19,7 +19,7 @@
 }
 
 .result {
-  background-color: #6179d8;
+  background-color: #3b425f;
   border-radius: 5px;
   margin-bottom: 20px;
   padding: 10px;
@@ -83,7 +83,7 @@ button:active {
             <button>0</button>
             <button>.</button>
             <button>=</button>
-            <button>C</button> <!-- Clear button -->
+            <button>C</button> 
         </section>
     </section>
     <script>
@@ -101,8 +101,9 @@ button:active {
             buttons.forEach(button => {
               button.addEventListener('click' , (event) => {
                 let value = event.target.innerText ; 
+                console.log(value) ;
                 if (!isNaN(value) || value === '.'){
-                  getoperand();
+                  getOperand(value);
                 }
                 else if (value === 'C'){
                   initialize(value) ; 
@@ -116,25 +117,72 @@ button:active {
               })
 
               function getOperand(N){
-                if(first_op.includes('.') && N==='.'){
-                  return ; 
+                if (operator === ''){
+                  if(first_op.includes('.') && N==='.'){
+                    return ; 
+                  }
+                  first_op += N ; 
+                  show(first_op) ; 
                 }
-                first_op += N ;
+                else{
+                  if (second_op.includes('.') && N=== '.'){
+                    return;
+                  }
+                  second_op += N ; 
+                  show(second_op) ;
+                }
               }
               function getOperator(o){
-                
+                if (first_op === '') return ; 
+                if(second_op !== ''){
+                  giveResult() ; 
+                }
+                operator = o ; 
+                //console.log("works") ; 
               }
               function giveResult(){
+                if(first_op === '' || second_op === '' || operator === ''){
+                  return ; 
+                }
+                let res ;
+                let num1 = parseFloat(first_op) ; 
+                let num2 = parseFloat(second_op) ; 
 
-              }
-              function giveResult(){
+                //>this lines to figure out where the error is 
+                /* console.log('********')
+                console.log(first_op) ; 
+                console.log(second_op) ;
+                console.log(operator) ; 
+                console.log('*******') ;*/ 
 
-              }
-              function update(){
-
+                switch (operator){
+                  case '+' : 
+                    res = num1 + num2 ; 
+                    break ;
+                  case '-' :
+                    res = num1 - num2 ; 
+                    break ; 
+                  case 'x' :
+                    res = num1 * num2 ; 
+                    break ; 
+                  case '/' :
+                    res = num1/num2 ; 
+                    break ; 
+                }
+                show(res) ;
+                console.log('res =' + res) ; 
+                first_op = res.toString() ; 
+                second_op = '' ;
+                operator = '' ;
+              }                
+              function show(value){
+                display.innerText = value ;
               }
               function initialize(){
-
+                first_op = '' ; 
+                second_op = '' ;
+                operator = '' ;
+                show('0');
               }
 
             });
